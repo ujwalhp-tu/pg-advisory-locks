@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5433/lock_demo
+    username: idaasd
+    password: idaasd
+
+logging:
+  level:
+    root: INFO
