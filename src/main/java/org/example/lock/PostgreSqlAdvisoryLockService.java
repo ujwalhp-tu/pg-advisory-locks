@@ -111,16 +111,18 @@ public class PostgreSqlAdvisoryLockService implements IAdvisoryLockService {
      * This provides superior collision resistance compared to Postgres hashtext().
      */
     private boolean tryAcquireLock(String namespace, String resourceId) {
-        long lockKey = generateHashKey(namespace, resourceId);
+//        long lockKey = generateHashKey(namespace, resourceId);
+        long lockKey = 123468684923L;
 
         Query query = entityManager.createNativeQuery(
                 "SELECT pg_try_advisory_xact_lock(?1)"
         );
         query.setParameter(1, lockKey);
-        
+
         Boolean result = (Boolean) query.getSingleResult();
         return Boolean.TRUE.equals(result);
     }
+
 
     /**
      * Acquires a transaction-level advisory lock, blocking indefinitely until available.
